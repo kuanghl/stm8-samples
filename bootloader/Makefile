@@ -16,10 +16,13 @@ ASRCS   := $(wildcard *.s)
 OBJS     = $(SRCS:.c=.rel)
 OBJS    += $(ASRCS:.s=.rel)
 
-CC       = sdcc
-LD       = sdld
-AS       = sdasstm8
-OBJCOPY  = sdobjcopy
+z_sdcc   = /home/kuanghl/kuanghl/other/mcu_dome/stm8-samples/tools/sdcc-4.4.0/bin
+z_flash  = /home/kuanghl/kuanghl/other/mcu_dome/stm8-samples/tools/stm8flash
+
+CC       = $(z_sdcc)/sdcc
+LD       = $(z_sdcc)/sdld
+AS       = $(z_sdcc)/sdasstm8
+OBJCOPY  = $(z_sdcc)/sdobjcopy
 ASFLAGS  = -plosgff
 CFLAGS   = -m$(ARCH) -p$(MCU) -D$(FAMILY) -I.
 CFLAGS  += --stack-auto --noinduction --use-non-free --noinvariant --opt-code-size

@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "stm8.h": "c"
+        "random": "cpp",
+        "stm8s.h": "c"
     }
 }

@@ -6,6 +6,7 @@ sudo apt-get install tar bzip2
 
 # sdcc: https://sourceforge.net/projects/sdcc/files/
 ## sdcc在高版本ubuntu编译,在低版本运行问题(例如22.04编译，20.04运行)
+# --prefix为安装路径
 strings /lib/x86_64-linux-gnu/libc.so.6 | grep GLIBC_ # 查看libc6版本ldd --version
 sudo vim /etc/apt/sources.list # 加入deb http://mirrors.aliyun.com/ubuntu/ jammy main
 sudo apt update
@@ -17,7 +18,38 @@ cd ./sdcc-4.4.0/bin
 
 # stmflash: https://github.com/vdudouyt/stm8flash.git
 tar -xvjf stm8flash.tar.bz2 -C ./ # stm8flash
+cd stm8flash && make
 
 # hex2bin: https://github.com/rustbox/hex2bin.git
 tar -zxvf hex2bin-2.5.1.tar.gz -C ./ # hex2bin-2.5.1
+cd hex2bin-2.5.1 && make
+
+# openocd environment
+wget ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
+tar zxvf autoconf-2.69.tar.gz -C ./
+cd autoconf-2.69
+./configure
+make 
+sudo make install
+
+# openocd: https://github.com/openocd-org/openocd.git
+tar -zxvf openocd-ac63cd0.tar.gz -C ./ # openocd-ac63cd0
+cd openocd
+./bootstrap
+./configure --prefix=$STM8_PATH
+make
+# sudo make install
+
+
+# stm8-binutils-gdb:
+wget https://sourceforge.net/projects/stm8-binutils-gdb/files/stm8-binutils-gdb-sources-2020-03-22.tar.gz/download -O stm8-binutils-gdb-sources-2018-03-04.tar.gz
+tar -zxvf stm8-binutils-gdb-sources-2020-03-22.tar.gz -C ./
+cd stm8-binutils-gdb-sources
+./patch_binutils.sh
+./configure_binutils.sh
+
+cd binutils-2.30
+./configure --prefix=$STM8_PATH 
+make
+# sudo make install
 ```
