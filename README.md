@@ -1,3 +1,8 @@
+### **参考**
+
+- [opensource-toolchain-stm8](https://github.com/cjacker/opensource-toolchain-stm8.git): linux stm8开发工具.
+- [Debug-STM8-with-SDCC-and-VSCode](https://github.com/DeqingSun/Debug-STM8-with-SDCC-and-VSCode.git): stm8 vscode单步调试。
+
 # stm8-bootloader
 Serial bootloader for STM8S and STM8L microcontrollers. A detailed write-up on this bootloader is posted [here](https://lujji.github.io/blog/serial-bootloader-for-stm8).
 
